@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Subir Imagen</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="addImage()" [formGroup]="imageForm">
+
+
+    <ion-item>
+      <ion-input type="file" (change)="onFileChange($event)" formControlName="archivo" ngControl="archivo">
+      </ion-input>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input type="text" formControlName="nombre" ngControl="nombre" readonly></ion-input>
+    </ion-item>
+
+    <!-- <span *ngIf="announcementForm.controls.title.errors && announcementForm.controls.title.touched"
+      class="text-form text-danger">El título debe ser
+      mayor a 5 caractéres</span> -->
+
+
+    <ion-button expand="full" type="submit">
+      <ion-icon slot="start" name="image-outline"></ion-icon>
+      Subir imagen
+    </ion-button>
+
+  </form>
+</ion-content>

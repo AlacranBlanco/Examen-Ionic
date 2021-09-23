@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div *ngIf="type == 'register'">Crear Aviso</div>
+      <div *ngIf="type == 'edit'">Editar Aviso</div>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="notice-list"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content *ngIf="type == 'register'">
+    <form (ngSubmit)="registerAnnouncement()" [formGroup]="announcementForm">
+
+      <ion-item>
+        <ion-label>Titulo</ion-label>
+        <ion-input type="text" formControlName="title" ngControl="title"></ion-input>
+      </ion-item>
+
+      <span *ngIf="validateForm('title')" class="text-form text-danger">El título debe ser
+        mayor a 5 caractéres</span>
+
+      <ion-item>
+        <ion-label>Aviso</ion-label>
+        <ion-textarea formControlName="announcement" ngControl="announcement"></ion-textarea>
+      </ion-item>
+      <span *ngIf="validateForm('announcement')" class="text-form text-danger">El aviso debe ser
+        mayor a 5 caractéres</span>
+
+      <ion-item>
+        <ion-label>Tipo de Usuario</ion-label>
+        <ion-input type="text" formControlName="userType" ngControl="userType"></ion-input>
+      </ion-item>
+
+      <span *ngIf="validateForm('userType')" class="text-form text-danger">El tipo de usuario debe ser
+        mayor a 5 caractéres</span>
+
+      <ion-item>
+        <ion-label>Imagen</ion-label>
+        <ion-input type="text" formControlName="imageName" ngControl="imageName"></ion-input>
+      </ion-item>
+
+      <span *ngIf="validateForm('imageName')" class="text-form text-danger">Debes colocar el nombre la imagen</span>
+
+      <ion-item>
+        <ion-label>Fecha del Aviso</ion-label>
+        <ion-datetime formControlName="date" displayFormat="DD.MM.YYYY"></ion-datetime>
+      </ion-item>
+      <span *ngIf="validateForm('date')" class="text-form text-danger">Debes seleccionar una fecha válida</span>
+
+      <ion-button expand="full" type="submit">
+        <ion-icon slot="start" name="newspaper-outline"></ion-icon>
+        Crear aviso
+      </ion-button>
+
+    </form>
+  </ion-content>
+
+  <ion-content *ngIf="type == 'edit'">
+    <form (ngSubmit)="update()" [formGroup]="announcementForm">
+
+
+      <ion-item>
+        <ion-label>Id</ion-label>
+        <ion-input type="number" formControlName="id" ngControl="id" readonly>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Titulo</ion-label>
+        <ion-input type="text" formControlName="title" ngControl="title"></ion-input>
+      </ion-item>
+
+      <span *ngIf="validateForm('title')" class="text-form text-danger">El título debe ser
+        mayor a 5 caractéres</span>
+
+      <ion-item>
+        <ion-label>Aviso</ion-label>
+        <ion-textarea formControlName="announcement" ngControl="announcement"></ion-textarea>
+      </ion-item>
+      <span *ngIf="validateForm('announcement')" class="text-form text-danger">El aviso debe ser
+        mayor a 5 caractéres</span>
+
+      <ion-item>
+        <ion-label>Tipo de Usuario</ion-label>
+        <ion-input type="text" formControlName="userType" ngControl="userType"></ion-input>
+      </ion-item>
+
+      <span *ngIf="validateForm('userType')" class="text-form text-danger">El tipo de usuario debe ser
+        mayor a 5 caractéres</span>
+
+      <ion-item>
+        <ion-label>Imagen</ion-label>
+        <ion-input type="text" formControlName="imageName" ngControl="imageName"></ion-input>
+      </ion-item>
+
+      <span *ngIf="validateForm('imageName')" class="text-form text-danger">Debes colocar el nombre la imagen</span>
+
+      <ion-item>
+        <ion-label>Fecha del Aviso</ion-label>
+        <ion-datetime formControlName="date" displayFormat="DD.MM.YYYY"></ion-datetime>
+      </ion-item>
+      <span *ngIf="validateForm('date')" class="text-form text-danger">Debes seleccionar una fecha válida</span>
+
+
+      <ion-button expand="full" type="submit">
+        <ion-icon slot="start" name="newspaper-outline"></ion-icon>
+        Actualizar aviso
+      </ion-button>
+
+
+
+    </form>
+  </ion-content>
+</ion-content>

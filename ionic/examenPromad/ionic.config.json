@@ -1,0 +1,7 @@
+{
+  "name": "examenPromad",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

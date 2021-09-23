@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Avisos</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-button size="small" slot="end" color="primary" [routerLink]="[newAnnouncement()]">Nuevo</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of annoucemments">
+      <ion-avatar slot="start">
+        <div *ngIf="item.imagen !== ' ' ;else elseBlock" class="">
+          <img src="http://54.69.118.16/IMG/{{item.imagen}}" alt="">
+        </div>
+        <ng-template #elseBlock>
+          <img src="https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png" alt="">
+        </ng-template>
+      </ion-avatar>
+      <ion-label>
+        <h2> {{item.titulo}}</h2>
+        <h3>{{item.tipoUsuario}}</h3>
+
+      </ion-label>
+      <ion-button size="small" color="secondary" [routerLink]="[editAnnouncement(item)]">Actualizar</ion-button>
+      <ion-button size="small" color="danger" (click)="deleteAnnouncement(item.id)" type="button">Eliminar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
